@@ -7,6 +7,7 @@
     <script src="/resources/js/jquery.js"></script>
 </head>
 <body>
+<jsp:include page="../layout/layout.jsp" flush="false"></jsp:include>
     <div class="container mt-5">
       <form action="/member/save" method="post"  name="saveform" enctype="multipart/form-data">
         <input type="text" id="memberEmail" name="memberEmail" class="form-control" placeholder="이메일을 입력하세요." onblur="EmailCk()">

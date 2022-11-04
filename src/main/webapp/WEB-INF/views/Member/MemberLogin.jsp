@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="../layout/layout.jsp" flush="false"></jsp:include>
   <div class="container">
     <form action="/member/login" method="post" name="loginform">
       <input type="text" name="memberEmail" id="memberEamil" class="form-control">
@@ -17,6 +18,9 @@
 <script>
   const login = () => {
     document.loginform.submit();
+    if('${member}'!= null) {
+      // alert("로그인이 완료되었습니다.")
+    }
   }
 </script>
 </html>
