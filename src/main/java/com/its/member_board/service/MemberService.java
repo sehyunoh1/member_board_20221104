@@ -43,4 +43,12 @@ public class MemberService {
     public String emailCk(String memberEmail){
        return memberRepository.emailCk(memberEmail);
     }
+    public boolean  login(MemberDTO memberDTO){
+        MemberDTO loginResult = memberRepository.login(memberDTO);
+        if(loginResult != null){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

@@ -7,13 +7,16 @@
 </head>
 <body>
    <div class="container">
-    <button class="btn btn-success" onclick="save()">회원가입</button>
+    <button class="btn btn-success" onclick="saveFn()">회원가입</button>
+    <button class="btn btn-success" onclick="login()">로그인</button>
    </div>
 </body>
 <script>
-    const save = () => {
-
+    const saveFn = () => {
         location="/member/save";
+    }
+    const login = () => {
+      location="/member/login";
     }
 </script>
 </html>

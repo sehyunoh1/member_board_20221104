@@ -13,4 +13,6 @@ public class MemberRepository {
     public void save(MemberDTO memberDTO){ sql.insert(("Member.save"),memberDTO);}
 
     public String emailCk(String memberEmail){return sql.selectOne(("Member.emailCk"),memberEmail);}
+
+    public MemberDTO login(MemberDTO memberDTO) {return sql.selectOne(("Member.login"),memberDTO);}
 }

@@ -4,8 +4,10 @@ import com.its.member_board.dto.MemberDTO;
 import com.its.member_board.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -16,13 +18,13 @@ public class MemberContoller {
 
 
     @GetMapping("/save")
-      public String saveform(){ return "MemberSave";}
+      public String saveform(){ return "Member/MemberSave";}
 
     @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO) throws IOException {
         System.out.println("memberDTO = " + memberDTO);
         memberService.save(memberDTO);
-        return "MemberLogin";
+        return "Member/MemberLogin";
     }
     @PostMapping("/duplicate")
     public @ResponseBody String emailCk(String memberEmail){
@@ -31,6 +33,19 @@ public class MemberContoller {
           return "ok";
       }else {
           return "no";
+      }
+    }
+    @GetMapping("/login")
+    public String loginform(){return "Member/MemberLogin";}
+    @PostMapping("/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model){
+      boolean loginResult= memberService.login(memberDTO);
+      if(loginResult){
+          session.setAttribute("member",memberDTO);
+          model.addAttribute("member",memberDTO);
+          return "Board/BoardList";
+      }else{
+          return "Member/MemberLogin";
       }
     }
 }
