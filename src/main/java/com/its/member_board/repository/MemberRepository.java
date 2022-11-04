@@ -11,4 +11,6 @@ public class MemberRepository {
     private SqlSessionTemplate sql;
 
     public void save(MemberDTO memberDTO){ sql.insert(("Member.save"),memberDTO);}
+
+    public String emailCk(String memberEmail){return sql.selectOne(("Member.emailCk"),memberEmail);}
 }
