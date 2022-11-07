@@ -43,12 +43,12 @@ public class MemberService {
     public String emailCk(String memberEmail){
        return memberRepository.emailCk(memberEmail);
     }
-    public boolean  login(MemberDTO memberDTO){
+    public MemberDTO  login(MemberDTO memberDTO){
         MemberDTO loginResult = memberRepository.login(memberDTO);
         if(loginResult != null){
-            return true;
+            return loginResult;
         }else {
-            return false;
+            return null;
         }
     }
 }

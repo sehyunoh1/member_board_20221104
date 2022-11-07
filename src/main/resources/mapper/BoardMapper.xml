@@ -5,13 +5,16 @@
 
 <mapper namespace="Board">
     <insert id="save" parameterType="board" useGeneratedKeys="true" keyProperty="boardId">
-    insert into board_table(boardTitle,boardContents,boardfileAttached,memberId)
-        values (#{boardTitle},#{boardContents},#{boardfileAttached},#{memberId})
+    insert into board_table(boardWriter,boardTitle,boardContents,boardfileAttached,memberId)
+        values (#{boardWriter},#{boardTitle},#{boardContents},#{boardfileAttached},#{memberId})
     </insert>
     <insert id="savefile" parameterType="board">
         insert into board_file_table(originalName,storedName,boardId)
         values (#{originalName},#{storedName},#{boardId})
     </insert>
+    <select id="list" resultType="board">
+        select * from board_table;
+    </select>
 </mapper>
 
 

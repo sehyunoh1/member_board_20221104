@@ -39,11 +39,12 @@ public class MemberContoller {
     public String loginform(){return "Member/MemberLogin";}
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model){
-      boolean loginResult= memberService.login(memberDTO);
-      if(loginResult){
-          session.setAttribute("member",memberDTO);
-          model.addAttribute("member",memberDTO);
-          return "Board/BoardList";
+      MemberDTO loginResult= memberService.login(memberDTO);
+
+      if(loginResult != null){
+          session.setAttribute("member",loginResult);
+          model.addAttribute("member",loginResult);
+          return "redirect:/board/";
       }else{
           return "Member/MemberLogin";
       }

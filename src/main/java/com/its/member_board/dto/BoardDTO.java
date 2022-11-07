@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 @ToString
 public class BoardDTO {
     private Long boardId;
+    private String boardWriter;
     private String boardTitle;
     private String boardContents;
     private Timestamp boardCreatedDate;

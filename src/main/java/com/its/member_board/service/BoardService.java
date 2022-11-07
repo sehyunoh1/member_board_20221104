@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class BoardService {
@@ -26,7 +27,7 @@ public class BoardService {
     */
         if(!boardDTO.getBoardfile().isEmpty())  {
             MultipartFile boardFile = boardDTO.getBoardfile();
-            String originalName = boardDTO.getOriginalName();
+            String originalName = boardFile.getOriginalFilename();
             String storedName = System.currentTimeMillis()+"-"+originalName;
             boardDTO.setOriginalName(originalName);
             boardDTO.setStoredName(storedName);
@@ -36,12 +37,12 @@ public class BoardService {
             BoardDTO saveDTO =boardRepository.save(boardDTO);
             boardRepository.savefile(saveDTO);
         } else {
-
             boardDTO.setBoardfileAttached(0);
             boardRepository.save(boardDTO);
         }
-
     }
+    public List<BoardDTO> list(){ return boardRepository.list();}
+
 
 
 }
