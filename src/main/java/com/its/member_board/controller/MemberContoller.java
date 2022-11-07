@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/member")
@@ -45,10 +46,18 @@ public class MemberContoller {
           session.setAttribute("member",loginResult);
           model.addAttribute("member",loginResult);
           return "redirect:/board/";
-      }else{
+      } else{
           return "Member/MemberLogin";
       }
     }
+
+    @GetMapping("/admin")
+    public String memberList(Model model){
+        List<MemberDTO> memberList = memberService.list();
+        model.addAttribute("member",memberList);
+        return "/Member/Admin";
+    }
+
 }
 
 

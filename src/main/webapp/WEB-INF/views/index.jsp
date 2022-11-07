@@ -9,6 +9,7 @@
    <div class="container">
     <button class="btn btn-success" onclick="saveFn()">회원가입</button>
     <button class="btn btn-success" onclick="login()">로그인</button>
+    <button class="btn btn-danger" onclick="admin()">관리자</button>
    </div>
 </body>
 <script>
@@ -17,6 +18,9 @@
     }
     const login = () => {
       location.href="/member/login";
+    }
+    const admin =() => {
+        location.href="/member/admin";
     }
 </script>
 </html>
