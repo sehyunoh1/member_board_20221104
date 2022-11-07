@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="../layout/layout.jsp" flush="false"></jsp:include>
     <div class="container">
         <table class="table table-striped table-hover text-center" name="admin">
             <tr>
@@ -17,22 +18,28 @@
                 <th>삭제</th>
             </tr>
             <c:forEach items="${member}" var="member">
-                <form action="/member/admin" name="memberdelete"></form>
+                <form action="/member/admin/" name="memberdelete" method="get">
                 <tr>
                     <td>${member.id}</td>
                     <td>${member.memberName}</td>
                     <td>${member.memberEmail}</td>
                     <td>${member.memberPassword}</td>
                     <td>${member.memberMobile}</td>
-                    <td><input type="button" class="btn btn-danger" value="삭제" onclick="deleteMember()"></td>
+                    <td>
+                        <a href="/member/admin/delete">
+                        <button class="btn btn-danger" onclick="deleteFn()">삭제</button>
+<%--                    <input type="button" class="btn btn-danger" onclick="deleteMember()" value="삭제">--%>
+                        </a>
+                    </td>
                 </tr>
+                </form>
             </c:forEach>
         </table>
     </div>
 </body>
 <script>
-    const deleteMember = () => {
-      document.memberdelete.submit()
+    const deleteFn = () => {
+      document.memberdelete.submit();
     }
 </script>
 </html>

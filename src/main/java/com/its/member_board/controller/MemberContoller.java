@@ -57,7 +57,11 @@ public class MemberContoller {
         model.addAttribute("member",memberList);
         return "/Member/Admin";
     }
-
+    @GetMapping ("/admin/delete")
+    public String memberDelete(Long id){
+        memberService.memberDelete(id);
+        return "redirect:/member/admin";
+    }
 }
 
 

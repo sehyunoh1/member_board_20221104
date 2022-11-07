@@ -24,4 +24,6 @@ public class MemberRepository {
     public MemberDTO login(MemberDTO memberDTO) {return sql.selectOne(("Member.login"),memberDTO);}
 
     public List<MemberDTO> list(){return sql.selectList("Member.list");}
+
+    public void memberDelete(Long id) {sql.delete(("Member.memberDelete"),id);}
 }
