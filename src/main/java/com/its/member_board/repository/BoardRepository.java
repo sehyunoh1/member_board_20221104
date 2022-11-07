@@ -19,4 +19,6 @@ public class BoardRepository {
     public void savefile(BoardDTO boardDTO){ sql.insert(("Board.savefile"),boardDTO);}
 
     public List<BoardDTO> list(){return sql.selectList("Board.list");}
+
+    public BoardDTO findbyId(Long boardId){return sql.selectOne(("Board.findbyId"),boardId);}
 }

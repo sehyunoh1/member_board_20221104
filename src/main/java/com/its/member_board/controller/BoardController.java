@@ -5,10 +5,7 @@ import com.its.member_board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,6 +28,12 @@ public class BoardController {
         List<BoardDTO> boardList =boardService.list();
         model.addAttribute("boardList",boardList);
         return "/Board/BoardList";
+    }
+    @GetMapping
+    public String findbyId(@RequestParam("boardId") Long boardId, Model model){
+        BoardDTO boardDTO = boardService.findbyId(boardId);
+        model.addAttribute("board",boardDTO);
+        return "/Board/BoardDetail";
     }
 
 }

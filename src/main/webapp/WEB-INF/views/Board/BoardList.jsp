@@ -22,9 +22,9 @@
             <tr>
                 <td>${boardList.boardId}</td>
                 <td>${boardList.boardWriter}</td>
-                <td>${boardList.boardTitle}</td>
+                <td><a href="/board?boardId=${boardList.boardId}">${boardList.boardTitle}</a></td>
                 <td>${boardList.boardContents}</td>
-                <td>${boardList.boardCreatedDate}</td>
+                <td><fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                 <td>${boardList.boardHits}</td>
             </tr>
         </c:forEach>

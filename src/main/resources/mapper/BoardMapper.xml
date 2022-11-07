@@ -15,6 +15,9 @@
     <select id="list" resultType="board">
         select * from board_table;
     </select>
+    <select id="findbyId" parameterType="Long" resultType="board">
+        select * from board_table where boardId=#{boardId}
+    </select>
 </mapper>
 
 
