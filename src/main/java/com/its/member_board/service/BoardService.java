@@ -43,7 +43,11 @@ public class BoardService {
     }
     public List<BoardDTO> list(){ return boardRepository.list();}
 
-    public BoardDTO findbyId(Long boardId){return boardRepository.findbyId(boardId);}
+    public BoardDTO findbyId(Long boardId){
+        boardRepository.Hits(boardId);
+       BoardDTO boardDTO= boardRepository.findbyId(boardId);
+        return boardDTO;
+    }
 
 
 

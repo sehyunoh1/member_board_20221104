@@ -21,4 +21,6 @@ public class BoardRepository {
     public List<BoardDTO> list(){return sql.selectList("Board.list");}
 
     public BoardDTO findbyId(Long boardId){return sql.selectOne(("Board.findbyId"),boardId);}
+
+    public int Hits(Long boardId) {return sql.update(("Board.hits"),boardId);}
 }
