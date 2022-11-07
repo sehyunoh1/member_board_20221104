@@ -19,6 +19,7 @@ public class HomeController {
         session.invalidate();
         return "index";}
 
-
+    @GetMapping("/board/boardList")
+    public String boardList(){return "redirect:/board/boardList";}
 
 }

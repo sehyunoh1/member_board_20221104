@@ -28,13 +28,13 @@ public class MemberService {
             MultipartFile memberFile=memberDTO.getMemberFile();
             String originalFile=  memberFile.getOriginalFilename();
             String storedFile= System.currentTimeMillis()+"-"+originalFile;
-            MemberDTO FileDTO = new MemberDTO();
-            FileDTO.setOriginalFileName(originalFile);
-            FileDTO.setStoredFileName(storedFile);
+            memberDTO.setOriginalFileName(originalFile);
+            memberDTO.setStoredFileName(storedFile);
             String savePath="D:\\spring_img\\member\\"+storedFile;
             memberFile.transferTo(new File(savePath));
             memberDTO.setFileAttached(1);
-            memberRepository.save(memberDTO);
+            MemberDTO saveMember = memberRepository.save(memberDTO);
+            memberRepository.savefile(saveMember);
         }else{
             memberDTO.setFileAttached(0);
             memberRepository.save(memberDTO);

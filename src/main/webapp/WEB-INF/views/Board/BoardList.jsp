@@ -11,12 +11,12 @@
 
     </div>
     <div class="container">
-        <button class="btn btn-primary" onclick="save()">글작성</button>
+        <button class="btn btn-primary" onclick="saveFn()">글작성</button>
     </div>
 </body>
 <script>
-    const save = () => {
-      location="/board/save";
+    const saveFn = () => {
+      location.href="/board/save";
     }
 </script>
 </html>

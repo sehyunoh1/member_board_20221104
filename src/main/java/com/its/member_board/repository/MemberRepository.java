@@ -10,7 +10,12 @@ public class MemberRepository {
     @Autowired
     private SqlSessionTemplate sql;
 
-    public void save(MemberDTO memberDTO){ sql.insert(("Member.save"),memberDTO);}
+    public MemberDTO save(MemberDTO memberDTO){
+        sql.insert(("Member.save"),memberDTO);
+        return memberDTO;
+    }
+
+    public void savefile(MemberDTO memberDTO) { sql.insert(("Member.savefile"),memberDTO);}
 
     public String emailCk(String memberEmail){return sql.selectOne(("Member.emailCk"),memberEmail);}
 

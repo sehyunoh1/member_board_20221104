@@ -13,10 +13,10 @@
 </body>
 <script>
     const saveFn = () => {
-        location="/member/save";
+        location.href="/member/save";
     }
     const login = () => {
-      location="/member/login";
+      location.href="/member/login";
     }
 </script>
 </html>

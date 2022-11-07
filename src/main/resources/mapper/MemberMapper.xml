@@ -4,9 +4,13 @@
 
 
 <mapper namespace="Member">
-    <insert id="save" parameterType="member">
+    <insert id="save" parameterType="member" useGeneratedKeys="true" keyProperty="memberId">
         insert into member_table (memberEmail,memberPassword,memberName,memberMobile,member_fileAttached)
         values (#{memberEmail},#{memberPassword},#{memberName},#{memberMobile},#{fileAttached})
+    </insert>
+    <insert id="savefile" parameterType="member">
+        insert into member_file_table (originalFileName,storedFileName,memberId)
+        values (#{originalFileName},#{storedFileName},#{memberId})
     </insert>
     <select id="emailCk" parameterType="String" resultType="String">
         select memberEmail from member_table where memberEmail=#{memberEmail};

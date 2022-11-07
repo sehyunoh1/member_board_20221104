@@ -1,6 +1,7 @@
 package com.its.member_board.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
 
@@ -17,4 +18,7 @@ public class BoardDTO {
     private int boardHits;
     private int boardfileAttached;
     private Long memberId;
+    private MultipartFile boardfile;
+    private String originalName;
+    private String storedName;
 }

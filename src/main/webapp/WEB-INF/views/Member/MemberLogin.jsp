@@ -11,15 +11,15 @@
     <form action="/member/login" method="post" name="loginform">
       <input type="text" name="memberEmail" id="memberEamil" class="form-control">
       <input type="text" name="memberPassword" id="memberPassword" class="form-control">
-      <input type="button" class="btn btn-primary" onclick="login()" value="로그인">
+      <input type="button" class="btn btn-primary" onclick="login1()" value="로그인">
     </form>
   </div>
 </body>
 <script>
-  const login = () => {
+  const login1 = () => {
     document.loginform.submit();
-    if('${member}'!= null) {
-      // alert("로그인이 완료되었습니다.")
+    if('${member}' != null) {
+       alert("로그인이 완료되었습니다.")
     }
   }
 </script>
