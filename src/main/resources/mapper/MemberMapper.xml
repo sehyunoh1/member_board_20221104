@@ -24,5 +24,8 @@
     <delete id="memberDelete" parameterType="Long">
      delete from member_table where id=#{id};
     </delete>
+    <select id="findbyId" parameterType="Long" resultType="member">
+        select * from member_table where id=#{id}
+    </select>
 </mapper>
 

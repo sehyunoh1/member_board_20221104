@@ -10,7 +10,7 @@
   <div class="container">
     <form action="/member/login" method="post" name="loginform">
       <input type="text" name="memberEmail" id="memberEamil" class="form-control">
-      <input type="text" name="memberPassword" id="memberPassword" class="form-control">
+      <input type="password" name="memberPassword" id="memberPassword" class="form-control">
       <input type="button" class="btn btn-primary" onclick="login1()" value="로그인">
     </form>
   </div>

@@ -57,9 +57,7 @@
         <button class="btn btn-danger" onclick="deletefn()">삭제</button>
     </c:if>
 </div>
-
-
-</body>
+<c:if test="${sessionScope.member.memberName != null}">
 <div class="container mt-5" id="comment_write">
     <div class="form-floating">
         <input type="text" name="commentWriter" value="${sessionScope.member.memberName}" class="form-control" id="commentWriter" readonly>
@@ -69,8 +67,11 @@
         <input type="text" name="commentContents" class="form-control" id="commentContents" >
         <label for="commentContents">내용</label>
     </div>
-    <button id="commentWrite" class="btn btn-secondary" onclick="commentWrite()">댓글작성</button>
+            <button id="commentWrite" class="btn btn-secondary" onclick="commentWrite()">댓글작성</button>
+
 </div>
+</c:if>
+</body>
 <div class="container mt-5" id="comment-list">
     <table class="table">
         <tr>
@@ -123,7 +124,7 @@
         },
         dataType:"json",
         success: function (commentList){
-            if (Writer != "null")
+
                 let output = "<table class='table'>"
                 output += "<tr><th>댓글번호</th>";
                 output += "<th>작성자</th>";
@@ -138,14 +139,17 @@
                     output += "</tr>"
                 }
                 output += "</table>"
-                document.getElementById("comment-list").innerHTML = output;
-                document.getElementById("commentWriter").value = "";
-                document.getElementById("commentContents").value = "";
+                document.getElementById('comment-list').innerHTML = output;
+                document.getElementById('commentWriter').value = "";
+                document.getElementById('commentContents').value = "";
         },
         error: function (){
             console.log("실패");
         }
     })
+    }
+    const writefail = () => {
+      alert("최소 1자 이상 입력해야합니다.")
     }
 </script>
 </html>

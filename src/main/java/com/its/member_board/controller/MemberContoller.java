@@ -63,6 +63,14 @@ public class MemberContoller {
         memberService.memberDelete(id);
         return "redirect:/member/admin";
     }
+
+   @GetMapping("/member")
+    public String findbyId(@RequestParam("id") Long id, Model model){
+        MemberDTO member = memberService.findbyId(id);
+        model.addAttribute("member",member);
+        return "/Member/MemberDetail";
+   }
+
 }
 
 

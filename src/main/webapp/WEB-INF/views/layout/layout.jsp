@@ -31,6 +31,7 @@
             <c:when test="${sessionScope.member.memberEmail != null}">
                 <span>${sessionScope.member.memberName}님</span>
                 <button type="button" class="btn btn-outline-primary me-2" onclick="logout()" >Logout</button>
+                <button type="button" class="btn btn-outline-primary me-2" onclick="memberDetail()">마이페이지</button>
             </c:when>
             <c:otherwise>
             <button type="button" class="btn btn-outline-primary me-2" onclick="login()" >Login</button>
@@ -50,6 +51,9 @@
     }
     const save = () => {
       location.href="/member/save";
+    }
+    const memberDetail = () => {
+      location.href="/member/member?id="+${sessionScope.member.id};
     }
 </script>
 </html>
