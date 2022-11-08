@@ -49,7 +49,6 @@ public class BoardController {
     }
     @PostMapping("/update")
     public String update(@ModelAttribute BoardDTO boardDTO, Model model){
-
         boolean result=boardService.update(boardDTO);
         BoardDTO DTO = boardService.findbyId(boardDTO.getBoardId());
         model.addAttribute("board",DTO);
@@ -59,6 +58,12 @@ public class BoardController {
         return "Board/BoardUpdate";
         }
     }
+    @GetMapping("/delete")
+    public String delete(@RequestParam("boardId") Long boardId){
+            boardService.delete(boardId);
+            return "redirect:/board/";
+    }
+
 
 
 }

@@ -86,8 +86,7 @@ public class BoardService {
        }else{
            return false;
        }
-
     }
-
+    public void delete(Long boardId){boardRepository.delete(boardId);}
 
 }
