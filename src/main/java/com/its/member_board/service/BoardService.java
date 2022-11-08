@@ -1,6 +1,8 @@
 package com.its.member_board.service;
 
+import com.its.member_board.commons.PagingConst;
 import com.its.member_board.dto.BoardDTO;
+import com.its.member_board.dto.PagingDTO;
 import com.its.member_board.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardService {
@@ -41,8 +45,35 @@ public class BoardService {
             boardRepository.save(boardDTO);
         }
     }
-    public List<BoardDTO> list(){ return boardRepository.list();}
+    public List<BoardDTO> list(int page) {//페이지당 나오는 글 목록
+    /*
+            page = 1, 0
+            page = 2, 3
+            page = 3, 6
+          */
+        int pageStart = (page - 1) * PagingConst.PAGE_LIMIT;
+        Map<String,Integer> pagingParams = new HashMap<>();
+        pagingParams.put("start",pageStart);
+        pagingParams.put("Limit",PagingConst.PAGE_LIMIT);
+        List<BoardDTO> pageList =boardRepository.pagingList(pagingParams);
+        return pageList;
+    }
 
+    public PagingDTO pagingParam(int page){ //페이지 개수
+        int boardCount = boardRepository.boardCount(); //전체 글 갯수
+        int maxPage= (int) (Math.ceil((double) boardCount / PagingConst.PAGE_LIMIT));
+        int startPage= ((int)(Math.ceil((double) page / PagingConst.BLOCK_LIMIT))-1) * PagingConst.BLOCK_LIMIT +1;
+        int endPage = startPage +PagingConst.BLOCK_LIMIT-1;
+        if(endPage>maxPage){
+            endPage=maxPage;
+        }
+        PagingDTO pageDTO=new PagingDTO();
+        pageDTO.setPage(page);
+        pageDTO.setMaxPage(maxPage);
+        pageDTO.setStartPage(startPage);
+        pageDTO.setEndPage(endPage);
+        return pageDTO;
+    }
     public BoardDTO findbyId(Long boardId){
         boardRepository.Hits(boardId);
        BoardDTO boardDTO= boardRepository.findbyId(boardId);

@@ -1,6 +1,7 @@
 package com.its.member_board.controller;
 
 import com.its.member_board.dto.BoardDTO;
+import com.its.member_board.dto.PagingDTO;
 import com.its.member_board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,12 @@ public class BoardController {
         return "redirect:/board/";
     }
     @GetMapping("/")
-    public String findAll(Model model){
-        List<BoardDTO> boardList =boardService.list();
+    public String findAll(Model model,
+                          @RequestParam(value="page", required = false,defaultValue = "1") int page  ){
+        List<BoardDTO> boardList =boardService.list(page);
+        PagingDTO pagingDTO = boardService.pagingParam(page);
         model.addAttribute("boardList",boardList);
+        model.addAttribute("paging",pagingDTO);
         return "/Board/BoardList";
     }
     @GetMapping
