@@ -41,7 +41,24 @@
                 </td>
             </tr>
         </c:if>
+        
+
     </table>
+        <button class="btn btn-secondary" onclick="listfn()">목록</button>
+    <c:if test="${sessionScope.member.id == board.memberId}">
+        <button class="btn btn-primary" onclick="updatefn()">수정</button>
+        <button class="btn btn-danger" onclick="deletefn()">삭제</button>
+    </c:if>
 </div>
 </body>
+<script>
+    const listfn = () => {
+        const page='${paging.page}';
+        location.href="/board/?page="+page;
+    }
+    const updatefn = () => {
+        const boardId='${board.boardId}';
+        location.href="/board/update?boardId="+boardId;
+    }
+</script>
 </html>

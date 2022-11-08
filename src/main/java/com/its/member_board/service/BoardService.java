@@ -75,11 +75,19 @@ public class BoardService {
         return pageDTO;
     }
     public BoardDTO findbyId(Long boardId){
-        boardRepository.Hits(boardId);
        BoardDTO boardDTO= boardRepository.findbyId(boardId);
         return boardDTO;
     }
+    public int hits(Long boardId){return boardRepository.Hits(boardId);}
+    public boolean update(BoardDTO boardDTO){
+       int update= boardRepository.update(boardDTO);
+       if(update>=1){
+           return true;
+       }else{
+           return false;
+       }
 
+    }
 
 
 }

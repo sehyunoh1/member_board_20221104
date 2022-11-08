@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+<jsp:include page="layout/layout.jsp" flush="false"></jsp:include>
    <div class="container">
     <button class="btn btn-success" onclick="saveFn()">회원가입</button>
     <button class="btn btn-success" onclick="login()">로그인</button>

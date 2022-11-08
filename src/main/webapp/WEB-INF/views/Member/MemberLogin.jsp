@@ -20,6 +20,8 @@
     document.loginform.submit();
     if('${member}' != null) {
        alert("로그인이 완료되었습니다.")
+    }else{
+      alert("이메일 및 비밀번호를 확인하세요.")
     }
   }
 </script>

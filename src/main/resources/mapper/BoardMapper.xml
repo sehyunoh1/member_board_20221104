@@ -21,8 +21,8 @@
     <update id="hits" parameterType="Long">
         update board_table set boardHits=boardHits+1 where boardId=#{boardId}
     </update>
-    <update id="update">
-        update board_table set boardTitle=#{boardTitle}, boardContents=#{boardContents} where boardId=#{boardId}
+    <update id="update" parameterType="board">
+        update board_table set boardTitle= #{boardTitle}, boardContents= #{boardContents} where boardId=#{boardId}
     </update>
     <select id="pagingList" parameterType="java.util.HashMap" resultType="board">
         select * from board_table order by boardId desc limit #{start},#{Limit}
@@ -30,6 +30,7 @@
     <select id="boardCount" resultType="Integer">
         select count(boardId) from board_table
     </select>
+
 </mapper>
 
 
