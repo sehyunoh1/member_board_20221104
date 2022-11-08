@@ -58,7 +58,8 @@ public class MemberContoller {
         return "/Member/Admin";
     }
     @GetMapping ("/admin/delete")
-    public String memberDelete(Long id){
+    public String memberDelete(@RequestParam("id") Long id){
+        System.out.println(id);
         memberService.memberDelete(id);
         return "redirect:/member/admin";
     }

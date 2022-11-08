@@ -18,7 +18,7 @@
                 <th>삭제</th>
             </tr>
             <c:forEach items="${member}" var="member">
-                <form action="/member/admin/" name="memberdelete" method="get">
+
                 <tr>
                     <td>${member.id}</td>
                     <td>${member.memberName}</td>
@@ -26,20 +26,22 @@
                     <td>${member.memberPassword}</td>
                     <td>${member.memberMobile}</td>
                     <td>
-                        <a href="/member/admin/delete">
-                        <button class="btn btn-danger" onclick="deleteFn()">삭제</button>
+                        <form action="/member/admin/delete" name="memberdelete" method="get">
+                        <submit class="btn btn-danger" onclick="deleteFn('${member.id}')">삭제</submit>
 <%--                    <input type="button" class="btn btn-danger" onclick="deleteMember()" value="삭제">--%>
-                        </a>
+                        </form>
                     </td>
                 </tr>
-                </form>
+
             </c:forEach>
         </table>
     </div>
 </body>
 <script>
-    const deleteFn = () => {
-      document.memberdelete.submit();
+    const deleteFn = (clickedid) => {
+        console.log(clickedid)
+        location.href="/member/admin/delete?id="+clickedid;
+
     }
 </script>
 </html>
