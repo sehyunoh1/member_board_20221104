@@ -33,6 +33,9 @@
     <delete id="delete" parameterType="Long">
         delete from board_table where boardId=#{boardId}
     </delete>
+    <select id="search" parameterType="java.util.HashMap" resultType="board">
+        select * from board_table where ${type} like concat('%',#{q},'%') order by boardId desc
+     </select>
 </mapper>
 
 

@@ -34,4 +34,8 @@ public class BoardRepository {
         return sql.update(("Board.update"),boardDTO);}
 
     public void delete(Long boardId){sql.delete(("Board.delete"),boardId);}
+
+    public List<BoardDTO> search(Map<String,String> searchParam){
+        return sql.selectList(("Board.search"),searchParam);
+    }
 }

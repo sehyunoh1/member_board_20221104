@@ -19,4 +19,5 @@ public class MemberDTO {
     private MultipartFile memberFile;
     private String originalFileName;
     private String storedFileName;
+    private Long memberId;
 }
