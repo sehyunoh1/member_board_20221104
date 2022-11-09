@@ -34,7 +34,7 @@
     }else if(document.saveform.memberName.value == ""){
         nameCk.innerHTML = "필수입력사항입니다."
         nameCk.style.color = "red";
-    } else {
+    } else if(passwordCk.innerHTML=="사용가능한 비밀번호입니다." && mobileCk.innerHTML=="사용가능한 전화번호입니다.") {
     document.saveform.submit()
     }
 }
@@ -59,7 +59,7 @@
     }
     const PasswordCk = () => {
       const Pass= document.getElementById("memberPassword").value;
-      const exp = /^(?=.*[a-z])(?=.*\d)(?=.[!@-_])[A-Z a-z \d -_!@]{5,10}/;
+      const exp = /^(?=.*[a-z])(?=.*\d)(?=.*[-_@!])[A-Z a-z \d -_!@]{5,10}$/;
       if(Pass.match(exp)){
         passwordCk.innerHTML="사용가능한 비밀번호입니다."
         passwordCk.style.color="green";
