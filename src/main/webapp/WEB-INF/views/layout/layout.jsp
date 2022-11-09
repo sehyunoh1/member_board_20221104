@@ -37,12 +37,18 @@
                 <span>${sessionScope.member.memberName}님</span>
                 <button type="button" class="btn btn-outline-primary me-2" onclick="logout()" >Logout</button>
                 <button type="button" class="btn btn-outline-primary me-2" onclick="memberDetail()">마이페이지</button>
+                <div class="container">
+                    <c:if test="${sessionScope.member.id == 1}">
+                        <button class="btn btn-danger" onclick="admin()">관리자</button>
+                    </c:if>
+                </div>
             </c:when>
             <c:otherwise>
             <button type="button" class="btn btn-outline-primary me-2" onclick="login()" >Login</button>
             <button type="button" class="btn btn-primary" onclick="save()">Sign-up</button>
             </c:otherwise>
            </c:choose>
+
         </div>
     </header>
 </div>
@@ -59,6 +65,9 @@
     }
     const memberDetail = () => {
       location.href="/member/member?id="+${sessionScope.member.id};
+    }
+    const admin = () => {
+      location.href="/member/admin";
     }
 </script>
 </html>
