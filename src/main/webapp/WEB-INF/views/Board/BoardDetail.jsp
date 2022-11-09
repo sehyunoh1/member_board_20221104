@@ -56,6 +56,9 @@
         <button class="btn btn-primary" onclick="updatefn()">수정</button>
         <button class="btn btn-danger" onclick="deletefn()">삭제</button>
     </c:if>
+    <c:if test="${sessionScope.member.memberName == admin}">
+        <button class="btn btn-danger" onclick="deletefn()">삭제</button>
+    </c:if>
 </div>
 <c:if test="${sessionScope.member.memberName != null}">
 <div class="container mt-5" id="comment_write">

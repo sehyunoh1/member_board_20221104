@@ -57,4 +57,13 @@ public class MemberService {
     public void memberDelete(Long id){memberRepository.memberDelete(id);}
 
     public MemberDTO findbyId(Long id){return memberRepository.findbyId(id);}
+
+    public boolean  update(MemberDTO memberDTO){
+       int result= memberRepository.update(memberDTO);
+       if(result>=1){
+           return true;
+       }else{
+           return false;
+       }
+        }
 }

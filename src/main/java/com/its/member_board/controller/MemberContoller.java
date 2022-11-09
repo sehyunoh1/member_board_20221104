@@ -70,7 +70,20 @@ public class MemberContoller {
         model.addAttribute("member",member);
         return "/Member/MemberDetail";
    }
+   @GetMapping("/update")
+     public String updateform(){return "/Member/MemberUpdate";}
 
+
+   @PostMapping("/update")
+   public String update(@ModelAttribute MemberDTO memberDTO,Model model){
+       boolean result= memberService.update(memberDTO);
+       model.addAttribute(("member"),memberDTO);
+       if(result) {
+           return "redirect:/member/member?id="+memberDTO.getId();
+       }else{
+           return "/Member/MemberUpdate";
+       }
+   }
 }
 
 

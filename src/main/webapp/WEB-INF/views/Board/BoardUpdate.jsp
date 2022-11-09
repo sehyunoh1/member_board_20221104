@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>수정</title>
+    <title>글 수정</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>

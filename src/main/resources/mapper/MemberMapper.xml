@@ -27,5 +27,8 @@
     <select id="findbyId" parameterType="Long" resultType="member">
         select * from member_table where id=#{id}
     </select>
+    <update id="update" parameterType="member">
+       update member_table set memberName=#{memberName},memberEmail=#{memberEmail},memberMobile=#{memberMobile} where id=#{id}
+    </update>
 </mapper>
 
