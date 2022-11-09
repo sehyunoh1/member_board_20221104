@@ -45,7 +45,7 @@
             </c:when>
             <c:otherwise>
             <button type="button" class="btn btn-outline-primary me-2" onclick="login()" >Login</button>
-            <button type="button" class="btn btn-primary" onclick="save()">Sign-up</button>
+            <button type="button" class="btn btn-primary" onclick="saveFn()">회원가입</button>
             </c:otherwise>
            </c:choose>
 
@@ -60,7 +60,7 @@
     const login = () => {
       location.href="/member/login";
     }
-    const save = () => {
+    const saveFn = () => {
       location.href="/member/save";
     }
     const memberDetail = () => {
