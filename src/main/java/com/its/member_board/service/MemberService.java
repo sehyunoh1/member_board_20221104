@@ -33,11 +33,11 @@ public class MemberService {
             memberDTO.setStoredFileName(storedFile);
             String savePath="D:\\spring_img\\member\\"+storedFile;
             memberFile.transferTo(new File(savePath));
-            memberDTO.setFileAttached(1);
+            memberDTO.setMember_fileAttached(1);
             MemberDTO saveMember = memberRepository.save(memberDTO);
             memberRepository.savefile(saveMember);
         }else{
-            memberDTO.setFileAttached(0);
+            memberDTO.setMember_fileAttached(0);
             memberRepository.save(memberDTO);
         }
     }

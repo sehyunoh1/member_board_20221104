@@ -25,7 +25,10 @@
      delete from member_table where id=#{id};
     </delete>
     <select id="findbyId" parameterType="Long" resultType="member">
-        select * from member_table where id=#{id}
+        select * from member_table  where id=#{id}
+    </select>
+    <select id="findbyIdFile" parameterType="Long" resultType="member">
+        select * from member_table m, member_file_table mf where m.id = mf.memberId and m.id=#{id}
     </select>
     <update id="update" parameterType="member">
        update member_table set memberName=#{memberName},memberEmail=#{memberEmail},memberMobile=#{memberMobile} where id=#{id}

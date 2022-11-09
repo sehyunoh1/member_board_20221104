@@ -22,7 +22,6 @@ public class CommentController {
     public @ResponseBody List<CommentDTO> save(@ModelAttribute CommentDTO commentDTO){
         boolean result= commentService.save(commentDTO);
        List<CommentDTO> commentList = commentService.list(commentDTO.getBoardId());
-        System.out.println("commentList = " + commentList);
         if(result){
             return commentList;
         }else{

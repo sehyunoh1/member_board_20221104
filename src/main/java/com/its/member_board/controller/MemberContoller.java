@@ -23,7 +23,6 @@ public class MemberContoller {
 
     @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO) throws IOException {
-        System.out.println("memberDTO = " + memberDTO);
         memberService.save(memberDTO);
         return "Member/MemberLogin";
     }
@@ -67,6 +66,7 @@ public class MemberContoller {
    @GetMapping("/member")
     public String findbyId(@RequestParam("id") Long id, Model model){
         MemberDTO member = memberService.findbyId(id);
+       System.out.println("member = " + member);
         model.addAttribute("member",member);
         return "/Member/MemberDetail";
    }

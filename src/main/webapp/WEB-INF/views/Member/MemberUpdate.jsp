@@ -9,7 +9,7 @@
 <jsp:include page="../layout/layout.jsp" flush="false"></jsp:include>
 <div class="container mt-5">
     <form action="/member/update" method="post" name="updateform">
-        <input type="text" value="${sessionScope.member.id}" class="form-control" name="id" readonly>
+        <input type="hidden" value="${sessionScope.member.id}" class="form-control" name="id" readonly>
         이름<input type="text" value="${sessionScope.member.memberName}" class="form-control" id="memberName" name="memberName">
         이메일<input type="text" value="${sessionScope.member.memberEmail}" class="form-control" id="memberEmail" name="memberEmail" >
         전화번호<input type="text" value="${sessionScope.member.memberMobile}" class="form-control" id="memberMobile" name="memberMobile" onblur="MobileCk()">

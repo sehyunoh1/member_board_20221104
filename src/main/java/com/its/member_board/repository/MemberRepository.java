@@ -27,7 +27,14 @@ public class MemberRepository {
 
     public void memberDelete(Long id) {sql.delete(("Member.memberDelete"),id);}
 
-    public MemberDTO findbyId(Long id) {return sql.selectOne(("Member.findbyId"),id);}
+    public MemberDTO findbyId(Long id) {
+        MemberDTO memberDTO =sql.selectOne(("Member.findbyId"),id);
+        if(memberDTO.getMember_fileAttached() ==1){
+                return sql.selectOne(("Member.findbyIdFile"),id);
+        }else{
+            return memberDTO;
+        }
+    }
 
     public int update(MemberDTO memberDTO){return sql.update(("Member.update"),memberDTO);}
     }

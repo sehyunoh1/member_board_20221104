@@ -21,7 +21,14 @@ public class BoardRepository {
 
     public List<BoardDTO> list(){return sql.selectList("Board.list");}
 
-    public BoardDTO findbyId(Long boardId){return sql.selectOne(("Board.findbyId"),boardId);}
+    public BoardDTO findbyId(Long boardId){
+        BoardDTO boardDTO = sql.selectOne(("Board.findbyId"),boardId);
+        if(boardDTO.getBoardfileAttached()==1){
+            return sql.selectOne(("Board.findbyIdFile"),boardId);
+        }else {
+            return sql.selectOne(("Board.findbyId"), boardId);
+        }
+    }
 
     public int Hits(Long boardId) {return sql.update(("Board.hits"),boardId);}
 

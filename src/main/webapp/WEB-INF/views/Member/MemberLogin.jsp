@@ -9,7 +9,7 @@
 <jsp:include page="../layout/layout.jsp" flush="false"></jsp:include>
   <div class="container">
     <form action="/member/login" method="post" name="loginform">
-      <input type="text" name="memberEmail" id="memberEamil" class="form-control">
+      <input type="text" name="memberEmail" id="memberEmail" class="form-control">
       <input type="password" name="memberPassword" id="memberPassword" class="form-control">
       <input type="button" class="btn btn-primary" onclick="login1()" value="로그인">
     </form>
@@ -17,11 +17,10 @@
 </body>
 <script>
   const login1 = () => {
-    document.loginform.submit();
-    if('${member}' != null) {
-       alert("로그인이 완료되었습니다.")
-    }else{
-      alert("이메일 및 비밀번호를 확인하세요.")
+    if(document.getElementById("memberEmail").value == "" || document.getElementById("memberPassword").value == ""){
+      alert("아이디 및 비밀번호를 입력해 주세요.")
+    }else {
+      document.loginform.submit();
     }
   }
 </script>
