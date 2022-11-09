@@ -66,4 +66,5 @@ public class MemberService {
            return false;
        }
         }
+     public void delete(Long id){memberRepository.delete(id);}
 }

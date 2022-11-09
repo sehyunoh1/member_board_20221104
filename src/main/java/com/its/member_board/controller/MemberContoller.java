@@ -84,6 +84,11 @@ public class MemberContoller {
            return "/Member/MemberUpdate";
        }
    }
+   @GetMapping("/delete")
+    public  String delete(@RequestParam Long id){
+        memberService.delete(id);
+        return "index";
+   }
 }
 
 
